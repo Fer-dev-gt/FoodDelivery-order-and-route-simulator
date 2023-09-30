@@ -260,15 +260,11 @@ public class PrepararPedido extends javax.swing.JFrame {
     SeguirEnvios.arrayPedidosPorEnviar.add(nuevoPedido);
     
     
-    
-    
     System.out.println("PEDIDOS POR ENVIAR");
     for (Pedido p : SeguirEnvios.arrayPedidosPorEnviar) {    
       System.out.println(p.getVehiculo()+", "+ p.getDistancia() +", "+p.getMonto());
     }
   }
-  
-  
   
   
   public void MostrarProductosYPedidosTabla(){
