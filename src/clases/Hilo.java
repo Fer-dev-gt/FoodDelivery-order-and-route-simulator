@@ -32,7 +32,7 @@ public class Hilo extends Thread{
       currentPositionX += 5;                                                    
       motoLabel.setLocation(currentPositionX, motoLabel.getY());
       try {
-        Thread.sleep(25);                                                 
+        Thread.sleep(10);                                                 
       } catch (InterruptedException e) {
         e.printStackTrace();
       }
@@ -46,7 +46,7 @@ public class Hilo extends Thread{
       currentPositionX -= 5;                                                    
       motoLabel.setLocation(currentPositionX, motoLabel.getY());
       try {
-        Thread.sleep(25);                                                 
+        Thread.sleep(10);                                                 
       } catch (InterruptedException e) {
         e.printStackTrace();
       }
@@ -58,25 +58,25 @@ public class Hilo extends Thread{
   
   
 
-private void flipLabel(JLabel label, boolean flip) {
-  int weight = label.getWidth();
-  int height = label.getHeight();
+  private void flipLabel(JLabel motoLabel, boolean flip) {
+    int weight = motoLabel.getWidth();
+    int height = motoLabel.getHeight();
 
-  BufferedImage bufferedImage = new BufferedImage(weight, height, BufferedImage.TYPE_INT_ARGB);
-  Graphics2D g = bufferedImage.createGraphics();
+    BufferedImage bufferedImage = new BufferedImage(weight, height, BufferedImage.TYPE_INT_ARGB);
+    Graphics2D g = bufferedImage.createGraphics();
 
-  if (flip) {
-    AffineTransform transform = AffineTransform.getScaleInstance(-1, 1);
-    transform.translate(-weight, 0);
-    g.setTransform(transform);
+    if (flip) {
+      AffineTransform transform = AffineTransform.getScaleInstance(-1, 1);
+      transform.translate(-weight, 0);
+      g.setTransform(transform);
+    }
+
+    motoLabel.paint(g);
+    g.dispose();
+
+    ImageIcon flippedIcon = new ImageIcon(bufferedImage);
+    motoLabel.setIcon(flippedIcon);
   }
-
-  label.paint(g);
-  g.dispose();
-
-  ImageIcon flippedIcon = new ImageIcon(bufferedImage);
-  label.setIcon(flippedIcon);
-}
   
   
   

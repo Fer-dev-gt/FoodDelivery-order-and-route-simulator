@@ -304,19 +304,18 @@ public class PrepararPedido extends javax.swing.JFrame {
  
   
   public int seleccionarProducto(){
-      int selectedRow = tablaProductos.getSelectedRow();                                                       // Obtenemos el index de la fila que esta siendo seleccionada
+    int selectedRow = tablaProductos.getSelectedRow();                                                       // Obtenemos el index de la fila que esta siendo seleccionada
 
-      if (selectedRow >= 0) {                                                                                   // Validamos que una fila esta siendo seleccionada
-        String nombreProducto = (String) tablaProductos.getValueAt(selectedRow, 0);                          
-        System.out.println("Producto seleccionado: " + nombreProducto);
-        int indexProductoArray = encontrarIndexProductoSeleccionado(nombreProducto);
-        System.out.println("Index: " +indexProductoArray);
-        return indexProductoArray;
-        //persistenciaDatosPedidos();                           // IMPORTANTE
-      } else {
-        System.out.println("No row selected");
-        return -1;
-      }
+    if (selectedRow >= 0) {                                                                                   // Validamos que una fila esta siendo seleccionada
+      String nombreProducto = (String) tablaProductos.getValueAt(selectedRow, 0);                          
+      System.out.println("Producto seleccionado: " + nombreProducto);
+      int indexProductoArray = encontrarIndexProductoSeleccionado(nombreProducto);
+      return indexProductoArray;
+      //persistenciaDatosPedidos();                           // IMPORTANTE
+    } else {
+      System.out.println("No row selected");
+      return -1;
+    }
   }
   
   

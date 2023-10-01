@@ -16,7 +16,6 @@ public class SeguirEnvios extends javax.swing.JFrame {
   public SeguirEnvios() {
     initComponents();
     agregarMotoParaEnvio();
-    
   }
 
   @SuppressWarnings("unchecked")
@@ -193,13 +192,17 @@ public class SeguirEnvios extends javax.swing.JFrame {
   
   private void agregarMotoParaEnvio(){
     int posicionY = 100;
+    arrayHilosDePedidos.clear();
+    arrayFotosMotos.clear();
+    
+    System.out.println("arrayPedidos1--"+arrayHilosDePedidos.size());
+    System.out.println("Pedidos: "+arrayPedidosPorEnviar.size());
     for (Pedido pedido : arrayPedidosPorEnviar) {
       ImageIcon imageIcon = new ImageIcon("/Users/fernandoorozco/Desktop/DeliveryFood/bike.png");
       Image originalImage = imageIcon.getImage();
       Image resizedImage = originalImage.getScaledInstance(100, 100, Image.SCALE_SMOOTH);
       ImageIcon resizedIcon = new ImageIcon(resizedImage);
       
-
       JLabel label2 = new JLabel(resizedIcon);
       label2.setBounds(100, posicionY, 100, 100);
       panelMotosEnvios.add(label2);
@@ -207,11 +210,10 @@ public class SeguirEnvios extends javax.swing.JFrame {
 
       Hilo hiloPedido = new Hilo(pedido.getVehiculo(), pedido.getDistancia(), label2);
       arrayHilosDePedidos.add(hiloPedido);
-
-
+      
       posicionY += 125;
     }
-    
+    System.out.println("arrayPedidos2--"+arrayHilosDePedidos.size());
   }
   
 
