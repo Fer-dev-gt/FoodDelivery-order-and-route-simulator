@@ -20,19 +20,17 @@ public class Hilo extends Thread{
   
 
   @Override
-    public void run() {
-        moveMotoHorizontally();
-    }
+  public void run() {
+    moveMotoHorizontally();
+  }
   
   private synchronized void moveMotoHorizontally() {
-    System.out.println("a");
     int currentPositionX = 100;
     int targetPositionX = 800;                                                  // Assuming 'distancia' is the target position
 
     while (currentPositionX < targetPositionX) {
       currentPositionX += 5;                                                    
       motoLabel.setLocation(currentPositionX, motoLabel.getY());
-      System.out.println(currentPositionX);
       try {
         Thread.sleep(25);                                                 
       } catch (InterruptedException e) {
@@ -42,49 +40,43 @@ public class Hilo extends Thread{
     
     System.out.println("Entregando Comida");
     targetPositionX = 100;
-    flipLabel(motoLabel);                                                   // Voltea la moto
+    flipLabel(motoLabel, true);                                                   
     
     while (currentPositionX >= targetPositionX) {
       currentPositionX -= 5;                                                    
       motoLabel.setLocation(currentPositionX, motoLabel.getY());
-      System.out.println(currentPositionX);
       try {
         Thread.sleep(25);                                                 
       } catch (InterruptedException e) {
         e.printStackTrace();
       }
     }
+        
+    flipLabel(motoLabel, true); 
   }
   
   
   
-  
-private void flipLabel(JLabel label) {
-    int w = label.getWidth();
-    int h = label.getHeight();
 
-    BufferedImage bufferedImage = new BufferedImage(w, h, BufferedImage.TYPE_INT_ARGB);
-    Graphics2D g = bufferedImage.createGraphics();
+private void flipLabel(JLabel label, boolean flip) {
+  int weight = label.getWidth();
+  int height = label.getHeight();
 
-    // Flip the label horizontally
+  BufferedImage bufferedImage = new BufferedImage(weight, height, BufferedImage.TYPE_INT_ARGB);
+  Graphics2D g = bufferedImage.createGraphics();
+
+  if (flip) {
     AffineTransform transform = AffineTransform.getScaleInstance(-1, 1);
-    transform.translate(-w, 0);
+    transform.translate(-weight, 0);
     g.setTransform(transform);
+  }
 
-    // Draw the flipped label
-    label.paint(g);
-    g.dispose();
+  label.paint(g);
+  g.dispose();
 
-    // Set the flipped label as the new icon
-    ImageIcon flippedIcon = new ImageIcon(bufferedImage);
-    label.setIcon(flippedIcon);
+  ImageIcon flippedIcon = new ImageIcon(bufferedImage);
+  label.setIcon(flippedIcon);
 }
-  
-  
-  
-  
-  
-  
   
   
   
