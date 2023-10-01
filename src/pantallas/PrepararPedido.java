@@ -259,7 +259,6 @@ public class PrepararPedido extends javax.swing.JFrame {
     Pedido nuevoPedido = new Pedido(motoSeleccionada, distanciaPedido,totalOrdenPedido);
     SeguirEnvios.arrayPedidosPorEnviar.add(nuevoPedido);
     
-    
     System.out.println("PEDIDOS POR ENVIAR");
     for (Pedido p : SeguirEnvios.arrayPedidosPorEnviar) {    
       System.out.println(p.getVehiculo()+", "+ p.getDistancia() +", "+p.getMonto());

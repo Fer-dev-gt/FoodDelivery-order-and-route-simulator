@@ -16,6 +16,8 @@ public class SeguirEnvios extends javax.swing.JFrame {
   public SeguirEnvios() {
     initComponents();
     agregarMotoParaEnvio();
+    ponerInformacionPedidos();
+    mostrarBotonesYLabels();
   }
 
   @SuppressWarnings("unchecked")
@@ -24,14 +26,18 @@ public class SeguirEnvios extends javax.swing.JFrame {
 
     jLabel1 = new javax.swing.JLabel();
     enviarTodasLasMotos = new javax.swing.JButton();
-    jLabel2 = new javax.swing.JLabel();
-    jLabel3 = new javax.swing.JLabel();
+    vehiculo1 = new javax.swing.JLabel();
+    distancia1 = new javax.swing.JLabel();
     iniciarViajeMoto1 = new javax.swing.JButton();
     regresarBtn = new javax.swing.JButton();
     panelMotosEnvios = new javax.swing.JPanel();
     metaLabel = new javax.swing.JLabel();
     iniciarViajeMoto2 = new javax.swing.JButton();
     iniciarViajeMoto3 = new javax.swing.JButton();
+    vehiculo3 = new javax.swing.JLabel();
+    vehiculo2 = new javax.swing.JLabel();
+    distancia2 = new javax.swing.JLabel();
+    distancia3 = new javax.swing.JLabel();
 
     setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -44,9 +50,9 @@ public class SeguirEnvios extends javax.swing.JFrame {
       }
     });
 
-    jLabel2.setText("Motocicleta 1");
+    vehiculo1.setText("Vehiculo");
 
-    jLabel3.setText("Distancia: ");
+    distancia1.setText("Distancia: ");
 
     iniciarViajeMoto1.setText("Enviar");
     iniciarViajeMoto1.addActionListener(new java.awt.event.ActionListener() {
@@ -98,6 +104,14 @@ public class SeguirEnvios extends javax.swing.JFrame {
       }
     });
 
+    vehiculo3.setText("Vehiculo");
+
+    vehiculo2.setText("Vehiculo");
+
+    distancia2.setText("Distancia: ");
+
+    distancia3.setText("Distancia: ");
+
     javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
     getContentPane().setLayout(layout);
     layout.setHorizontalGroup(
@@ -113,15 +127,34 @@ public class SeguirEnvios extends javax.swing.JFrame {
             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 329, Short.MAX_VALUE)
             .addComponent(enviarTodasLasMotos))
           .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-            .addGap(23, 23, 23)
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-              .addComponent(jLabel2)
-              .addComponent(jLabel3)
-              .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                .addComponent(iniciarViajeMoto3)
-                .addComponent(iniciarViajeMoto1)
-                .addComponent(iniciarViajeMoto2)))
-            .addGap(18, 18, 18)
+              .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(vehiculo3))
+              .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                  .addComponent(vehiculo1)
+                  .addComponent(distancia1)))
+              .addGroup(layout.createSequentialGroup()
+                .addGap(12, 12, 12)
+                .addComponent(iniciarViajeMoto1))
+              .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(vehiculo2))
+              .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(distancia3))
+              .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(distancia2))
+              .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(iniciarViajeMoto2))
+              .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(iniciarViajeMoto3)))
+            .addGap(29, 29, 29)
             .addComponent(panelMotosEnvios, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
         .addGap(36, 36, 36))
     );
@@ -138,14 +171,22 @@ public class SeguirEnvios extends javax.swing.JFrame {
         .addGap(36, 36, 36)
         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
           .addGroup(layout.createSequentialGroup()
-            .addComponent(jLabel2)
+            .addComponent(vehiculo1)
             .addGap(18, 18, 18)
-            .addComponent(jLabel3)
-            .addGap(26, 26, 26)
+            .addComponent(distancia1)
+            .addGap(30, 30, 30)
             .addComponent(iniciarViajeMoto1)
-            .addGap(115, 115, 115)
+            .addGap(76, 76, 76)
+            .addComponent(vehiculo2)
+            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+            .addComponent(distancia2)
+            .addGap(18, 18, 18)
             .addComponent(iniciarViajeMoto2)
-            .addGap(175, 175, 175)
+            .addGap(72, 72, 72)
+            .addComponent(vehiculo3)
+            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+            .addComponent(distancia3)
+            .addGap(18, 18, 18)
             .addComponent(iniciarViajeMoto3)
             .addGap(0, 0, Short.MAX_VALUE))
           .addComponent(panelMotosEnvios, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
@@ -181,6 +222,53 @@ public class SeguirEnvios extends javax.swing.JFrame {
     startThreadAtIndex(2);
   }//GEN-LAST:event_enviarTodasLasMotosActionPerformed
 
+  
+  private void ponerInformacionPedidos() {
+    if(!arrayPedidosPorEnviar.isEmpty()){
+      vehiculo1.setText(arrayPedidosPorEnviar.get(0).getVehiculo());
+      distancia1.setText("Distancia: "+String.valueOf(arrayPedidosPorEnviar.get(0).getDistancia())+"km");
+    }
+    if(arrayPedidosPorEnviar.size() > 1){
+      vehiculo2.setText(arrayPedidosPorEnviar.get(1).getVehiculo());
+      distancia2.setText("Distancia: "+String.valueOf(arrayPedidosPorEnviar.get(1).getDistancia())+"km");
+    }
+    if(arrayPedidosPorEnviar.size() > 2){
+      vehiculo3.setText(arrayPedidosPorEnviar.get(2).getVehiculo());
+      distancia3.setText("Distancia: "+String.valueOf(arrayPedidosPorEnviar.get(2).getDistancia())+"km");
+    }
+  }
+  
+  private void mostrarBotonesYLabels() {
+    switch (arrayHilosDePedidos.size()) {
+      case 0 -> {
+        vehiculo1.setVisible(false);
+        distancia1.setVisible(false);
+        iniciarViajeMoto1.setVisible(false);
+        vehiculo2.setVisible(false);
+        distancia2.setVisible(false);
+        iniciarViajeMoto2.setVisible(false);
+        vehiculo3.setVisible(false);
+        distancia3.setVisible(false);
+        iniciarViajeMoto3.setVisible(false);
+      }
+      case 1 -> {
+        vehiculo2.setVisible(false);
+        distancia2.setVisible(false);
+        iniciarViajeMoto2.setVisible(false);
+        vehiculo3.setVisible(false);
+        distancia3.setVisible(false);
+        iniciarViajeMoto3.setVisible(false);
+      }
+      case 2 -> {
+        vehiculo3.setVisible(false);
+        distancia3.setVisible(false);
+        iniciarViajeMoto3.setVisible(false);
+      }
+    }
+  }
+  
+  
+  
   private void startThreadAtIndex(int index) {
     System.out.println("arrayHilosDePedidos SIZE: " +arrayHilosDePedidos.size());
     if (index >= 0 && index < arrayHilosDePedidos.size()) {
@@ -195,7 +283,6 @@ public class SeguirEnvios extends javax.swing.JFrame {
     arrayHilosDePedidos.clear();
     arrayFotosMotos.clear();
     
-    System.out.println("arrayPedidos1--"+arrayHilosDePedidos.size());
     System.out.println("Pedidos: "+arrayPedidosPorEnviar.size());
     for (Pedido pedido : arrayPedidosPorEnviar) {
       ImageIcon imageIcon = new ImageIcon("/Users/fernandoorozco/Desktop/DeliveryFood/bike.png");
@@ -213,7 +300,6 @@ public class SeguirEnvios extends javax.swing.JFrame {
       
       posicionY += 125;
     }
-    System.out.println("arrayPedidos2--"+arrayHilosDePedidos.size());
   }
   
 
@@ -254,15 +340,19 @@ public class SeguirEnvios extends javax.swing.JFrame {
   }
 
   // Variables declaration - do not modify//GEN-BEGIN:variables
+  private javax.swing.JLabel distancia1;
+  private javax.swing.JLabel distancia2;
+  private javax.swing.JLabel distancia3;
   private javax.swing.JButton enviarTodasLasMotos;
   private javax.swing.JButton iniciarViajeMoto1;
   private javax.swing.JButton iniciarViajeMoto2;
   private javax.swing.JButton iniciarViajeMoto3;
   private javax.swing.JLabel jLabel1;
-  private javax.swing.JLabel jLabel2;
-  private javax.swing.JLabel jLabel3;
   private javax.swing.JLabel metaLabel;
   private javax.swing.JPanel panelMotosEnvios;
   private javax.swing.JButton regresarBtn;
+  private javax.swing.JLabel vehiculo1;
+  private javax.swing.JLabel vehiculo2;
+  private javax.swing.JLabel vehiculo3;
   // End of variables declaration//GEN-END:variables
 }

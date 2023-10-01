@@ -38,7 +38,7 @@ public class Hilo extends Thread{
       }
     }
     
-    System.out.println("Entregando Comida");
+    System.out.println("Comida entregada, REGRESANDO");
     targetPositionX = 100;
     flipLabel(motoLabel, true);                                                   
     
@@ -53,6 +53,7 @@ public class Hilo extends Thread{
     }
         
     flipLabel(motoLabel, true); 
+    System.out.println("VIAJE FINALIZADO");
   }
   
   
