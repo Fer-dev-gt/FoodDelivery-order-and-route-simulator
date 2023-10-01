@@ -3,11 +3,16 @@ package clases;
 import java.awt.Graphics2D;
 import java.awt.geom.AffineTransform;
 import java.awt.image.BufferedImage;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.ObjectOutputStream;
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JButton;
 
 public class Hilo extends Thread{
@@ -46,7 +51,6 @@ public class Hilo extends Thread{
     String FechaHoraInicio = startTime.format(formatter);
     System.out.println("Start Time: " + FechaHoraInicio);
     
-    
     double currentPositionX = 100;
     int targetPositionX = 800;                                                  
 
@@ -82,12 +86,25 @@ public class Hilo extends Thread{
     String FechaHoraFinal = endTime.format(formatter);
     System.out.println("End Time: " + FechaHoraFinal);
     
-    
     Pedido pedidoTerminado = new Pedido(this.nombreMoto, this.distancia,this.montoOrden,FechaHoraInicio, FechaHoraFinal);
     arrayPedidosTerminados.add(pedidoTerminado);
+    
+    try {
+      persistenciaHistorialPedidos();
+    } catch (IOException ex) {
+      Logger.getLogger(Hilo.class.getName()).log(Level.SEVERE, null, ex);
+    }
   }
   
   
+  public static void persistenciaHistorialPedidos() throws IOException {
+    FileOutputStream archivoDeSalida = new FileOutputStream("/Users/fernandoorozco/Desktop/Historial_Pedidos.bin");
+    ObjectOutputStream objectoOutput = new ObjectOutputStream(archivoDeSalida);
+    objectoOutput.writeObject(arrayPedidosTerminados);
+    archivoDeSalida.close();
+    objectoOutput.close();
+    System.out.println("Se hizo PERSISTENCIA de Historial de Pedidos");
+  }
   
 
   private void flipLabel(JLabel motoLabel, boolean flip) {
@@ -109,7 +126,6 @@ public class Hilo extends Thread{
     ImageIcon flippedIcon = new ImageIcon(bufferedImage);
     motoLabel.setIcon(flippedIcon);
   }
-  
   
   
   public String getNombreMoto() {

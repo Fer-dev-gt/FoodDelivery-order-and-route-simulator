@@ -2,6 +2,10 @@ package pantallas;
 
 import clases.Hilo;
 import clases.Pedido;
+import java.io.FileInputStream;
+import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.util.ArrayList;
 import javax.swing.table.DefaultTableModel;
 
 public class HistorialEnvios extends javax.swing.JFrame {
@@ -103,6 +107,41 @@ public class HistorialEnvios extends javax.swing.JFrame {
     
     tablaHistorialPedidos.setModel(modelProductos);                                                          
     System.out.println("Se actualizaron las filas de los pedidos ya terminados");
+  }
+  
+  
+  public static void recuperarHistorialPedidos() {
+    try {
+      FileInputStream archivoBinario = new FileInputStream("/Users/fernandoorozco/Desktop/Historial_Pedidos.bin");
+      ObjectInputStream objetoInput = new ObjectInputStream(archivoBinario);
+      ArrayList<Pedido> ordenesEnviadas = (ArrayList<Pedido>) objetoInput.readObject();
+      System.out.println("Se recuperaron: " + ordenesEnviadas.size() + " registros de Historial de Pedidos");
+      
+      for (Pedido ordenEnviada : ordenesEnviadas) {
+        String horaInicioViaje = ordenEnviada.getFechaHoraCreacion();
+        String horaFinalViaje = ordenEnviada.getFechaHoraEntrega();
+        boolean isRepeated = checkearHistorialRepetido(horaInicioViaje, horaFinalViaje);
+        if(isRepeated) {
+          System.out.println("No se Registro dato repetido");
+          continue;
+        }
+        System.out.println(ordenEnviada.getFechaHoraCreacion());
+        Hilo.arrayPedidosTerminados.add(ordenEnviada);
+      }
+      
+      archivoBinario.close();
+      objetoInput.close();
+    } catch (IOException | ClassNotFoundException e) {
+      System.out.println("Error al recuperar Historial de Pedidos Completados: " + e.getMessage());
+    }
+  }
+  
+  
+  public static boolean checkearHistorialRepetido(String horaInicioViaje, String horaFinalViaje) {
+    for (Pedido producto : Hilo.arrayPedidosTerminados) {
+      if (producto.getFechaHoraCreacion().equals(horaInicioViaje) && producto.getFechaHoraEntrega().equals(horaFinalViaje)) return true;                     
+    }
+    return false;                                                                 
   }
   
   

@@ -2,6 +2,9 @@ package pantallas;
 
 import clases.Motocicleta;
 import clases.Producto;
+import java.io.FileInputStream;
+import java.io.IOException;
+import java.io.ObjectInputStream;
 import java.util.ArrayList;
 import static pantallas.RegistrarProductos.imprimirNombreProductos;
 
@@ -17,6 +20,8 @@ public class MainMenu extends javax.swing.JFrame {
   
   public MainMenu() {
     initComponents();
+    recuperarProductos();
+    HistorialEnvios.recuperarHistorialPedidos();
     crearCuatroProductosPorDefecto();
     crearTresMotocicletas();
   }
@@ -150,10 +155,38 @@ public class MainMenu extends javax.swing.JFrame {
   }
   
   
+  public void recuperarProductos() {
+    try {
+      FileInputStream archivoBinario = new FileInputStream("/Users/fernandoorozco/Desktop/Productos_Restaurante.bin");
+      ObjectInputStream objetoInput = new ObjectInputStream(archivoBinario);
+      ArrayList<Producto> productosDelArchivo = (ArrayList<Producto>) objetoInput.readObject();
+      System.out.println("Se recuperaron: " + productosDelArchivo.size() + " registros de Productos");
+      
+      for (Producto productoRegistro : productosDelArchivo) {
+        String nombreProducto = productoRegistro.getNombre();
+        boolean isRepeated = checkearProductoRepetido(nombreProducto);
+        if(isRepeated) {
+          System.out.println("No se Registro dato repetido");
+          continue;
+        }
+        System.out.println(productoRegistro.getNombre());
+        arrayProductos.add(productoRegistro);
+      }
+      
+      archivoBinario.close();
+      objetoInput.close();
+    } catch (IOException | ClassNotFoundException e) {
+      System.out.println("Error al recuperar Productos: " + e.getMessage());
+    }
+  }
   
   
-  
-  
+  public static boolean checkearProductoRepetido(String nombreProducto) {
+    for (Producto producto : arrayProductos) {
+      if (producto.getNombre().equals(nombreProducto)) return true;                     
+    }
+    return false;                                                                 
+  }
   
   
   

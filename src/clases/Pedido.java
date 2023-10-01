@@ -1,14 +1,13 @@
 package clases;
-import java.time.LocalDateTime;
+import java.io.Serializable;
 
-public class Pedido {
+public class Pedido implements Serializable{
   private int numeroDeOrden;
   private String vehiculo;
   private double distancia;
   private double monto;
   private String fechaHoraCreacion; 
   private String fechaHoraEntrega; 
-
 
   public Pedido(String vehiculo, double distancia, double monto) {
     this.vehiculo = vehiculo;
@@ -72,17 +71,4 @@ public class Pedido {
     this.fechaHoraEntrega = fechaHoraEntrega;
   }
   
-  
-
-
-  
-  @Override
-  public String toString() {
-      return "Pedido{" +
-              "vehiculo='" + vehiculo + '\'' +
-              ", distancia=" + distancia +
-              ", monto=" + monto +
-              ", fechaYHora=" + fechaHoraCreacion +
-                '}';
-    }
 }

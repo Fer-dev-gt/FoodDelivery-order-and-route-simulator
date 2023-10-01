@@ -1,6 +1,11 @@
 package pantallas;
 
 import clases.Producto;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.ObjectOutputStream;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 
 public class RegistrarProductos extends javax.swing.JFrame {
@@ -123,9 +128,23 @@ public class RegistrarProductos extends javax.swing.JFrame {
       JOptionPane.showMessageDialog(null, "❌ Ingrese un numero en precio! ❌", "Alert", JOptionPane.INFORMATION_MESSAGE);
       precioProductoInput.setText("");
     }
+    
+    try {
+      persistenciaProductosRestaurantes();
+    } catch (IOException ex) {
+      Logger.getLogger(RegistrarProductos.class.getName()).log(Level.SEVERE, null, ex);
+    }
   }//GEN-LAST:event_registrarProductoActionPerformed
 
   
+  public static void persistenciaProductosRestaurantes() throws IOException {
+    FileOutputStream archivoDeSalida = new FileOutputStream("/Users/fernandoorozco/Desktop/Productos_Restaurante.bin");
+    ObjectOutputStream objectoOutput = new ObjectOutputStream(archivoDeSalida);
+    objectoOutput.writeObject(MainMenu.arrayProductos);
+    archivoDeSalida.close();
+    objectoOutput.close();
+    System.out.println("Se hizo PERSISTENCIA de Datos Productos");
+  }
   
   
   public static boolean checkearProductoRepetido(String nombreProducto) {
@@ -134,13 +153,14 @@ public class RegistrarProductos extends javax.swing.JFrame {
     }
     return false;                                                               
   }
-  
+
   
   public static void imprimirNombreProductos(){
     for(Producto producto :  MainMenu.arrayProductos) {
       System.out.println(producto.getNombre()+ ", precio: "+producto.getPrecio());
     }
   }
+  
   
   public void limpiarInputs(){
     nombreProductoInput.setText("");
