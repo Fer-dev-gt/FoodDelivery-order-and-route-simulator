@@ -1,9 +1,14 @@
 package pantallas;
 
+import clases.Hilo;
+import clases.Pedido;
+import javax.swing.table.DefaultTableModel;
+
 public class HistorialEnvios extends javax.swing.JFrame {
 
   public HistorialEnvios() {
     initComponents();
+    MostrarHistorialPedidos();
   }
 
   @SuppressWarnings("unchecked")
@@ -12,14 +17,14 @@ public class HistorialEnvios extends javax.swing.JFrame {
 
     jLabel1 = new javax.swing.JLabel();
     jScrollPane1 = new javax.swing.JScrollPane();
-    jTable1 = new javax.swing.JTable();
+    tablaHistorialPedidos = new javax.swing.JTable();
     regresarBtn = new javax.swing.JButton();
 
     setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
     jLabel1.setText("Historial de Pedidos");
 
-    jTable1.setModel(new javax.swing.table.DefaultTableModel(
+    tablaHistorialPedidos.setModel(new javax.swing.table.DefaultTableModel(
       new Object [][] {
         {null, null, null, null, null},
         {null, null, null, null, null},
@@ -30,7 +35,7 @@ public class HistorialEnvios extends javax.swing.JFrame {
         "Vehiculo", "Distancia", "Monto", "Fecha y hora de creación", "Title Fecha y hora de entrega5"
       }
     ));
-    jScrollPane1.setViewportView(jTable1);
+    jScrollPane1.setViewportView(tablaHistorialPedidos);
 
     regresarBtn.setText("REGRESAR");
     regresarBtn.addActionListener(new java.awt.event.ActionListener() {
@@ -80,6 +85,26 @@ public class HistorialEnvios extends javax.swing.JFrame {
 
   
   
+  public void MostrarHistorialPedidos() {
+    tablaHistorialPedidos.setAutoCreateRowSorter(true); 
+    DefaultTableModel modelProductos = new DefaultTableModel();                                  
+    modelProductos.setColumnIdentifiers(new String[] {"Vehiculo", "Distancia (km)", "Monto (Q)", "Fecha y Hora de Creación", "Fecha y Hora de Entrega"});
+    
+    for (Pedido pedidoTerminado : Hilo.arrayPedidosTerminados) {                                         
+      Object[] rowData = new Object[] {
+        pedidoTerminado.getVehiculo(),
+        pedidoTerminado.getDistancia(),
+        pedidoTerminado.getMonto(),
+        pedidoTerminado.getFechaHoraCreacion(),
+        pedidoTerminado.getFechaHoraEntrega()
+      };
+      modelProductos.addRow(rowData);
+    }
+    
+    tablaHistorialPedidos.setModel(modelProductos);                                                          
+    System.out.println("Se actualizaron las filas de los pedidos ya terminados");
+  }
+  
   
   
   
@@ -120,7 +145,7 @@ public class HistorialEnvios extends javax.swing.JFrame {
   // Variables declaration - do not modify//GEN-BEGIN:variables
   private javax.swing.JLabel jLabel1;
   private javax.swing.JScrollPane jScrollPane1;
-  private javax.swing.JTable jTable1;
   private javax.swing.JButton regresarBtn;
+  private javax.swing.JTable tablaHistorialPedidos;
   // End of variables declaration//GEN-END:variables
 }

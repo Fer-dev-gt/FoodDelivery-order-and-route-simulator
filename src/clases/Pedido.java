@@ -6,8 +6,8 @@ public class Pedido {
   private String vehiculo;
   private double distancia;
   private double monto;
-  private LocalDateTime fechaHoraCreacion; 
-  private LocalDateTime fechaHoraEntrega; 
+  private String fechaHoraCreacion; 
+  private String fechaHoraEntrega; 
 
 
   public Pedido(String vehiculo, double distancia, double monto) {
@@ -16,6 +16,14 @@ public class Pedido {
     this.monto = monto;
   }
 
+  public Pedido(String vehiculo, double distancia, double monto, String fechaHoraCreacion, String fechaHoraEntrega) {
+    this.vehiculo = vehiculo;
+    this.distancia = distancia;
+    this.monto = monto;
+    this.fechaHoraCreacion = fechaHoraCreacion;
+    this.fechaHoraEntrega = fechaHoraEntrega;
+  }
+  
   public String getVehiculo() {
     return vehiculo;
   }
@@ -48,19 +56,19 @@ public class Pedido {
     this.monto = monto;
   }
 
-  public LocalDateTime getFechaHoraCreacion() {
+  public String getFechaHoraCreacion() {
     return fechaHoraCreacion;
   }
 
-  public void setFechaHoraCreacion(LocalDateTime fechaHoraCreacion) {
+  public void setFechaHoraCreacion(String fechaHoraCreacion) {
     this.fechaHoraCreacion = fechaHoraCreacion;
   }
 
-  public LocalDateTime getFechaHoraEntrega() {
+  public String getFechaHoraEntrega() {
     return fechaHoraEntrega;
   }
 
-  public void setFechaHoraEntrega(LocalDateTime fechaHoraEntrega) {
+  public void setFechaHoraEntrega(String fechaHoraEntrega) {
     this.fechaHoraEntrega = fechaHoraEntrega;
   }
   

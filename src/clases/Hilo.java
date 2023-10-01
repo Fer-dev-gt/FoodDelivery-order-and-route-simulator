@@ -5,19 +5,34 @@ import java.awt.geom.AffineTransform;
 import java.awt.image.BufferedImage;
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
+import java.util.ArrayList;
+import javax.swing.JButton;
 
 public class Hilo extends Thread{
   private String nombreMoto;
   private double distancia;
+  private double montoOrden;
   private JLabel motoLabel;
+  private JButton botonMoto;
   private double velocidadMoto = 20;
+  public static ArrayList<Pedido> arrayPedidosTerminados = new ArrayList<>(); 
   
-  public Hilo(String nombreMoto, double distancia, JLabel motoLabel) {
+  public Hilo(String nombreMoto, double distancia, double montoOrden,JLabel motoLabel, JButton botonMoto) {
     this.nombreMoto = nombreMoto;
+    this.montoOrden = montoOrden;
+    this.distancia = distancia;
+    this.motoLabel = motoLabel;
+    this.botonMoto = botonMoto;
+  }
+  
+  public Hilo(String nombreMoto, double distancia, double montoOrden,JLabel motoLabel) {
+    this.nombreMoto = nombreMoto;
+    this.montoOrden = montoOrden;
     this.distancia = distancia;
     this.motoLabel = motoLabel;
   }
-  
 
   @Override
   public void run() {
@@ -25,14 +40,21 @@ public class Hilo extends Thread{
   }
   
   private synchronized void moveMotoHorizontally() {
-    int currentPositionX = 100;
-    int targetPositionX = 800;                                                  // Assuming 'distancia' is the target position
+    DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yy - HH:mm:ss");
+    
+    LocalDateTime startTime = LocalDateTime.now();
+    String FechaHoraInicio = startTime.format(formatter);
+    System.out.println("Start Time: " + FechaHoraInicio);
+    
+    
+    double currentPositionX = 100;
+    int targetPositionX = 800;                                                  
 
     while (currentPositionX < targetPositionX) {
-      currentPositionX += 5;                                                    
-      motoLabel.setLocation(currentPositionX, motoLabel.getY());
+      currentPositionX += 5/distancia;                                                    
+      motoLabel.setLocation((int) currentPositionX, motoLabel.getY());
       try {
-        Thread.sleep(10);                                                 
+        Thread.sleep(5);                                                 
       } catch (InterruptedException e) {
         e.printStackTrace();
       }
@@ -43,10 +65,10 @@ public class Hilo extends Thread{
     flipLabel(motoLabel, true);                                                   
     
     while (currentPositionX >= targetPositionX) {
-      currentPositionX -= 5;                                                    
-      motoLabel.setLocation(currentPositionX, motoLabel.getY());
+      currentPositionX -= 5/distancia;                                                    
+      motoLabel.setLocation((int) currentPositionX, motoLabel.getY());
       try {
-        Thread.sleep(10);                                                 
+        Thread.sleep(5);                                                 
       } catch (InterruptedException e) {
         e.printStackTrace();
       }
@@ -54,6 +76,15 @@ public class Hilo extends Thread{
         
     flipLabel(motoLabel, true); 
     System.out.println("VIAJE FINALIZADO");
+    this.botonMoto.setEnabled(true);
+    
+    LocalDateTime endTime = LocalDateTime.now();
+    String FechaHoraFinal = endTime.format(formatter);
+    System.out.println("End Time: " + FechaHoraFinal);
+    
+    
+    Pedido pedidoTerminado = new Pedido(this.nombreMoto, this.distancia,this.montoOrden,FechaHoraInicio, FechaHoraFinal);
+    arrayPedidosTerminados.add(pedidoTerminado);
   }
   
   

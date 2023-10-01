@@ -1,10 +1,12 @@
 package pantallas;
 
 import clases.Hilo;
+import clases.Motocicleta;
 import clases.Pedido;
 import java.awt.Image;
 import java.util.ArrayList;
 import javax.swing.ImageIcon;
+import javax.swing.JButton;
 import javax.swing.JLabel;
 
 
@@ -38,6 +40,7 @@ public class SeguirEnvios extends javax.swing.JFrame {
     vehiculo2 = new javax.swing.JLabel();
     distancia2 = new javax.swing.JLabel();
     distancia3 = new javax.swing.JLabel();
+    liberarMotos = new javax.swing.JButton();
 
     setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -112,6 +115,13 @@ public class SeguirEnvios extends javax.swing.JFrame {
 
     distancia3.setText("Distancia: ");
 
+    liberarMotos.setText("Marcar motos como disponibles");
+    liberarMotos.addActionListener(new java.awt.event.ActionListener() {
+      public void actionPerformed(java.awt.event.ActionEvent evt) {
+        liberarMotosActionPerformed(evt);
+      }
+    });
+
     javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
     getContentPane().setLayout(layout);
     layout.setHorizontalGroup(
@@ -119,7 +129,9 @@ public class SeguirEnvios extends javax.swing.JFrame {
       .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
           .addGroup(layout.createSequentialGroup()
-            .addGap(23, 23, 23)
+            .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(liberarMotos)
+            .addGap(402, 402, 402)
             .addComponent(regresarBtn))
           .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
             .addGap(450, 450, 450)
@@ -191,7 +203,9 @@ public class SeguirEnvios extends javax.swing.JFrame {
             .addGap(0, 0, Short.MAX_VALUE))
           .addComponent(panelMotosEnvios, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         .addGap(18, 18, 18)
-        .addComponent(regresarBtn)
+        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+          .addComponent(regresarBtn)
+          .addComponent(liberarMotos))
         .addGap(17, 17, 17))
     );
 
@@ -205,22 +219,35 @@ public class SeguirEnvios extends javax.swing.JFrame {
   }//GEN-LAST:event_regresarBtnActionPerformed
 
   private void iniciarViajeMoto1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_iniciarViajeMoto1ActionPerformed
-    startThreadAtIndex(0);
+    iniciarViajeMoto1.setEnabled(false);
+    startThreadAtIndex(0, iniciarViajeMoto1);
   }//GEN-LAST:event_iniciarViajeMoto1ActionPerformed
 
   private void iniciarViajeMoto2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_iniciarViajeMoto2ActionPerformed
-    startThreadAtIndex(1);
+    iniciarViajeMoto2.setEnabled(false);
+    startThreadAtIndex(1, iniciarViajeMoto2);
   }//GEN-LAST:event_iniciarViajeMoto2ActionPerformed
 
   private void iniciarViajeMoto3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_iniciarViajeMoto3ActionPerformed
-    startThreadAtIndex(2);
+    iniciarViajeMoto3.setEnabled(false);
+    startThreadAtIndex(2, iniciarViajeMoto3);
   }//GEN-LAST:event_iniciarViajeMoto3ActionPerformed
 
   private void enviarTodasLasMotosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_enviarTodasLasMotosActionPerformed
-    startThreadAtIndex(0);
-    startThreadAtIndex(1);
-    startThreadAtIndex(2);
+    iniciarViajeMoto1.setEnabled(false);
+    iniciarViajeMoto2.setEnabled(false);
+    iniciarViajeMoto3.setEnabled(false);
+    startThreadAtIndex(0, iniciarViajeMoto1);
+    startThreadAtIndex(1, iniciarViajeMoto2);
+    startThreadAtIndex(2, iniciarViajeMoto3);
   }//GEN-LAST:event_enviarTodasLasMotosActionPerformed
+
+  private void liberarMotosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_liberarMotosActionPerformed
+    for (Motocicleta moto : MainMenu.arrayMotocicleta) {
+      moto.setEstaDisponible(true);
+    }
+    System.out.println("Las motos ahora estan listas para más pedidos");
+  }//GEN-LAST:event_liberarMotosActionPerformed
 
   
   private void ponerInformacionPedidos() {
@@ -269,11 +296,11 @@ public class SeguirEnvios extends javax.swing.JFrame {
   
   
   
-  private void startThreadAtIndex(int index) {
+  private void startThreadAtIndex(int index, JButton botonMoto) {
     System.out.println("arrayHilosDePedidos SIZE: " +arrayHilosDePedidos.size());
     if (index >= 0 && index < arrayHilosDePedidos.size()) {
-      Hilo hilo = new Hilo(arrayPedidosPorEnviar.get(index).getVehiculo(), arrayPedidosPorEnviar.get(index).getDistancia(), arrayFotosMotos.get(index));
-      arrayHilosDePedidos.set(index, hilo);     // Replace the old thread with the new one
+      Hilo hilo = new Hilo(arrayPedidosPorEnviar.get(index).getVehiculo(), arrayPedidosPorEnviar.get(index).getDistancia(), arrayPedidosPorEnviar.get(index).getMonto(),arrayFotosMotos.get(index), botonMoto);
+      arrayHilosDePedidos.set(index, hilo);     
       hilo.start();
     }
   }
@@ -290,12 +317,12 @@ public class SeguirEnvios extends javax.swing.JFrame {
       Image resizedImage = originalImage.getScaledInstance(100, 100, Image.SCALE_SMOOTH);
       ImageIcon resizedIcon = new ImageIcon(resizedImage);
       
-      JLabel label2 = new JLabel(resizedIcon);
-      label2.setBounds(100, posicionY, 100, 100);
-      panelMotosEnvios.add(label2);
-      arrayFotosMotos.add(label2);
+      JLabel labelFotoMoto = new JLabel(resizedIcon);
+      labelFotoMoto.setBounds(100, posicionY, 100, 100);
+      panelMotosEnvios.add(labelFotoMoto);
+      arrayFotosMotos.add(labelFotoMoto);
 
-      Hilo hiloPedido = new Hilo(pedido.getVehiculo(), pedido.getDistancia(), label2);
+      Hilo hiloPedido = new Hilo(pedido.getVehiculo(), pedido.getDistancia(), pedido.getMonto(),labelFotoMoto);
       arrayHilosDePedidos.add(hiloPedido);
       
       posicionY += 125;
@@ -348,6 +375,7 @@ public class SeguirEnvios extends javax.swing.JFrame {
   private javax.swing.JButton iniciarViajeMoto2;
   private javax.swing.JButton iniciarViajeMoto3;
   private javax.swing.JLabel jLabel1;
+  private javax.swing.JButton liberarMotos;
   private javax.swing.JLabel metaLabel;
   private javax.swing.JPanel panelMotosEnvios;
   private javax.swing.JButton regresarBtn;
