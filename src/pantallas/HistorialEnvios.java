@@ -88,7 +88,6 @@ public class HistorialEnvios extends javax.swing.JFrame {
   }//GEN-LAST:event_regresarBtnActionPerformed
 
   
-  
   public void MostrarHistorialPedidos() {
     tablaHistorialPedidos.setAutoCreateRowSorter(true); 
     DefaultTableModel modelProductos = new DefaultTableModel();                                  
@@ -97,8 +96,8 @@ public class HistorialEnvios extends javax.swing.JFrame {
     for (Pedido pedidoTerminado : Hilo.arrayPedidosTerminados) {                                         
       Object[] rowData = new Object[] {
         pedidoTerminado.getVehiculo(),
-        pedidoTerminado.getDistancia(),
-        pedidoTerminado.getMonto(),
+        pedidoTerminado.getDistancia() + " km",
+        "Q "+ pedidoTerminado.getMonto(),
         pedidoTerminado.getFechaHoraCreacion(),
         pedidoTerminado.getFechaHoraEntrega()
       };

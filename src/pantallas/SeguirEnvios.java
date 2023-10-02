@@ -81,16 +81,16 @@ public class SeguirEnvios extends javax.swing.JFrame {
     panelMotosEnviosLayout.setHorizontalGroup(
       panelMotosEnviosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
       .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelMotosEnviosLayout.createSequentialGroup()
-        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+        .addContainerGap(887, Short.MAX_VALUE)
         .addComponent(metaLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
-        .addGap(36, 36, 36))
+        .addContainerGap())
     );
     panelMotosEnviosLayout.setVerticalGroup(
       panelMotosEnviosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
       .addGroup(panelMotosEnviosLayout.createSequentialGroup()
-        .addGap(43, 43, 43)
+        .addGap(41, 41, 41)
         .addComponent(metaLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 531, javax.swing.GroupLayout.PREFERRED_SIZE)
-        .addContainerGap(48, Short.MAX_VALUE))
+        .addContainerGap(50, Short.MAX_VALUE))
     );
 
     iniciarViajeMoto2.setText("Enviar");
@@ -136,7 +136,7 @@ public class SeguirEnvios extends javax.swing.JFrame {
           .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
             .addGap(450, 450, 450)
             .addComponent(jLabel1)
-            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 329, Short.MAX_VALUE)
+            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 330, Short.MAX_VALUE)
             .addComponent(enviarTodasLasMotos))
           .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -247,8 +247,19 @@ public class SeguirEnvios extends javax.swing.JFrame {
       moto.setEstaDisponible(true);
     }
     System.out.println("Las motos ahora estan listas para más pedidos");
+    arrayPedidosPorEnviar.clear();
+    arrayHilosDePedidos.clear();
+    for (JLabel label : arrayFotosMotos) {
+      panelMotosEnvios.remove(label);
+    }
+    arrayFotosMotos.clear();
+    agregarMotoParaEnvio();
+    if (panelMotosEnvios.getComponentCount() > 0) panelMotosEnvios.remove(0); 
+    mostrarBotonesYLabels();
+    panelMotosEnvios.repaint();
   }//GEN-LAST:event_liberarMotosActionPerformed
 
+  
   
   private void ponerInformacionPedidos() {
     if(!arrayPedidosPorEnviar.isEmpty()){
@@ -293,8 +304,6 @@ public class SeguirEnvios extends javax.swing.JFrame {
       }
     }
   }
-  
-  
   
   private void startThreadAtIndex(int index, JButton botonMoto) {
     System.out.println("arrayHilosDePedidos SIZE: " +arrayHilosDePedidos.size());

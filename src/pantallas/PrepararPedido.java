@@ -267,15 +267,14 @@ public class PrepararPedido extends javax.swing.JFrame {
   
   
   public void MostrarProductosYPedidosTabla(){
-    // Tabla de los productos disponbles
-    tablaProductos.setAutoCreateRowSorter(true); 
+    tablaProductos.setAutoCreateRowSorter(true);                            // Tabla de los productos disponbles
     DefaultTableModel modelProductos = new DefaultTableModel();                                  
     modelProductos.setColumnIdentifiers(new String[] {"Nombre", "Precio (Q)"});
     
     for (Producto producto : MainMenu.arrayProductos) {                                         
       Object[] rowData = new Object[] {
         producto.getNombre(),
-        producto.getPrecio(),
+        "Q " +producto.getPrecio(),
       };
       modelProductos.addRow(rowData);
     }
@@ -284,15 +283,14 @@ public class PrepararPedido extends javax.swing.JFrame {
     System.out.println("Se actualizaron las filas de los Productos");
     
     
-    // Tabla de los pedidos por hacer PENDIENTE
-    tablaPedidos.setAutoCreateRowSorter(true); 
+    tablaPedidos.setAutoCreateRowSorter(true);                              // Tabla de los productos de la orden actual
     DefaultTableModel modelPedidos = new DefaultTableModel();                                  
     modelPedidos.setColumnIdentifiers(new String[] {"Nombre", "Precio (Q)"});
     
     for (Producto pedido : arrayOrdenActual) {                                         
       Object[] rowData = new Object[] {
         pedido.getNombre(),
-        pedido.getPrecio(),
+        "Q " +pedido.getPrecio(),
       };
       modelPedidos.addRow(rowData);
     }
@@ -303,14 +301,12 @@ public class PrepararPedido extends javax.swing.JFrame {
  
   
   public int seleccionarProducto(){
-    int selectedRow = tablaProductos.getSelectedRow();                                                       // Obtenemos el index de la fila que esta siendo seleccionada
-
+    int selectedRow = tablaProductos.getSelectedRow();                                                        // Obtenemos el index de la fila que esta siendo seleccionada
     if (selectedRow >= 0) {                                                                                   // Validamos que una fila esta siendo seleccionada
       String nombreProducto = (String) tablaProductos.getValueAt(selectedRow, 0);                          
       System.out.println("Producto seleccionado: " + nombreProducto);
       int indexProductoArray = encontrarIndexProductoSeleccionado(nombreProducto);
       return indexProductoArray;
-      //persistenciaDatosPedidos();                           // IMPORTANTE
     } else {
       System.out.println("No row selected");
       return -1;
@@ -333,7 +329,7 @@ public class PrepararPedido extends javax.swing.JFrame {
       totalOrdenActual += producto.getPrecio();
     }
     totalOrdenPedido = totalOrdenActual;
-    totalOrdenLabel.setText(String.valueOf(totalOrdenActual));
+    totalOrdenLabel.setText("Q "+String.valueOf(totalOrdenActual));
   }
   
   

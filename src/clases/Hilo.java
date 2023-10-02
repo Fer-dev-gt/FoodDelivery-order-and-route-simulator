@@ -44,9 +44,9 @@ public class Hilo extends Thread{
     moveMotoHorizontally();
   }
   
+  
   private synchronized void moveMotoHorizontally() {
     DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yy - HH:mm:ss");
-    
     LocalDateTime startTime = LocalDateTime.now();
     String FechaHoraInicio = startTime.format(formatter);
     System.out.println("Start Time: " + FechaHoraInicio);
@@ -64,7 +64,7 @@ public class Hilo extends Thread{
       }
     }
     
-    System.out.println("Comida entregada, REGRESANDO");
+    System.out.println(this.nombreMoto+" Entrego la comida, REGRESANDO");
     targetPositionX = 100;
     flipLabel(motoLabel, true);                                                   
     
@@ -79,7 +79,7 @@ public class Hilo extends Thread{
     }
         
     flipLabel(motoLabel, true); 
-    System.out.println("VIAJE FINALIZADO");
+    System.out.println("✅ "+this.nombreMoto+" FINALIZO SU VIAJE ✅");
     this.botonMoto.setEnabled(true);
     
     LocalDateTime endTime = LocalDateTime.now();
@@ -112,17 +112,16 @@ public class Hilo extends Thread{
     int height = motoLabel.getHeight();
 
     BufferedImage bufferedImage = new BufferedImage(weight, height, BufferedImage.TYPE_INT_ARGB);
-    Graphics2D g = bufferedImage.createGraphics();
+    Graphics2D graphics = bufferedImage.createGraphics();
 
     if (flip) {
       AffineTransform transform = AffineTransform.getScaleInstance(-1, 1);
       transform.translate(-weight, 0);
-      g.setTransform(transform);
+      graphics.setTransform(transform);
     }
 
-    motoLabel.paint(g);
-    g.dispose();
-
+    motoLabel.paint(graphics);
+    graphics.dispose();
     ImageIcon flippedIcon = new ImageIcon(bufferedImage);
     motoLabel.setIcon(flippedIcon);
   }
