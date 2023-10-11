@@ -34,6 +34,7 @@ public class MainMenu extends javax.swing.JFrame {
     prepararEnvio = new javax.swing.JButton();
     hacerSeguimientoEnvios = new javax.swing.JButton();
     historialPedidos = new javax.swing.JButton();
+    jLabel1 = new javax.swing.JLabel();
 
     setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -65,23 +66,33 @@ public class MainMenu extends javax.swing.JFrame {
       }
     });
 
+    jLabel1.setFont(new java.awt.Font("Monaco", 1, 36)); // NOI18N
+    jLabel1.setText("Delivery Food");
+
     javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
     getContentPane().setLayout(layout);
     layout.setHorizontalGroup(
       layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
       .addGroup(layout.createSequentialGroup()
-        .addGap(275, 275, 275)
-        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-          .addComponent(registrarNuevoProducto, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-          .addComponent(prepararEnvio, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-          .addComponent(hacerSeguimientoEnvios, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-          .addComponent(historialPedidos, javax.swing.GroupLayout.PREFERRED_SIZE, 177, javax.swing.GroupLayout.PREFERRED_SIZE))
-        .addContainerGap(282, Short.MAX_VALUE))
+        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+          .addGroup(layout.createSequentialGroup()
+            .addGap(275, 275, 275)
+            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+              .addComponent(registrarNuevoProducto, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+              .addComponent(prepararEnvio, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+              .addComponent(hacerSeguimientoEnvios, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+              .addComponent(historialPedidos, javax.swing.GroupLayout.PREFERRED_SIZE, 177, javax.swing.GroupLayout.PREFERRED_SIZE)))
+          .addGroup(layout.createSequentialGroup()
+            .addGap(214, 214, 214)
+            .addComponent(jLabel1)))
+        .addContainerGap(234, Short.MAX_VALUE))
     );
     layout.setVerticalGroup(
       layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
       .addGroup(layout.createSequentialGroup()
-        .addGap(132, 132, 132)
+        .addGap(35, 35, 35)
+        .addComponent(jLabel1)
+        .addGap(80, 80, 80)
         .addComponent(registrarNuevoProducto)
         .addGap(30, 30, 30)
         .addComponent(prepararEnvio)
@@ -89,7 +100,7 @@ public class MainMenu extends javax.swing.JFrame {
         .addComponent(hacerSeguimientoEnvios)
         .addGap(39, 39, 39)
         .addComponent(historialPedidos)
-        .addContainerGap(162, Short.MAX_VALUE))
+        .addContainerGap(131, Short.MAX_VALUE))
     );
 
     pack();
@@ -220,6 +231,7 @@ public class MainMenu extends javax.swing.JFrame {
   // Variables declaration - do not modify//GEN-BEGIN:variables
   private javax.swing.JButton hacerSeguimientoEnvios;
   private javax.swing.JButton historialPedidos;
+  private javax.swing.JLabel jLabel1;
   private javax.swing.JButton prepararEnvio;
   private javax.swing.JButton registrarNuevoProducto;
   // End of variables declaration//GEN-END:variables

@@ -26,7 +26,6 @@ public class SeguirEnvios extends javax.swing.JFrame {
   // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
   private void initComponents() {
 
-    jLabel1 = new javax.swing.JLabel();
     enviarTodasLasMotos = new javax.swing.JButton();
     vehiculo1 = new javax.swing.JLabel();
     distancia1 = new javax.swing.JLabel();
@@ -41,10 +40,9 @@ public class SeguirEnvios extends javax.swing.JFrame {
     distancia2 = new javax.swing.JLabel();
     distancia3 = new javax.swing.JLabel();
     liberarMotos = new javax.swing.JButton();
+    jLabel1 = new javax.swing.JLabel();
 
     setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-
-    jLabel1.setText("Visualización de Trayectorias");
 
     enviarTodasLasMotos.setText("Enviar Todas");
     enviarTodasLasMotos.addActionListener(new java.awt.event.ActionListener() {
@@ -122,22 +120,15 @@ public class SeguirEnvios extends javax.swing.JFrame {
       }
     });
 
+    jLabel1.setFont(new java.awt.Font("Monaco", 1, 36)); // NOI18N
+    jLabel1.setText("Seguimiento de Entregas");
+
     javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
     getContentPane().setLayout(layout);
     layout.setHorizontalGroup(
       layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
       .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-          .addGroup(layout.createSequentialGroup()
-            .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addComponent(liberarMotos)
-            .addGap(402, 402, 402)
-            .addComponent(regresarBtn))
-          .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-            .addGap(450, 450, 450)
-            .addComponent(jLabel1)
-            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 330, Short.MAX_VALUE)
-            .addComponent(enviarTodasLasMotos))
           .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
               .addGroup(layout.createSequentialGroup()
@@ -167,20 +158,28 @@ public class SeguirEnvios extends javax.swing.JFrame {
                 .addContainerGap()
                 .addComponent(iniciarViajeMoto3)))
             .addGap(29, 29, 29)
-            .addComponent(panelMotosEnvios, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+            .addComponent(panelMotosEnvios, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+          .addGroup(layout.createSequentialGroup()
+            .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+              .addGroup(layout.createSequentialGroup()
+                .addComponent(liberarMotos)
+                .addGap(402, 402, 402)
+                .addComponent(regresarBtn))
+              .addGroup(layout.createSequentialGroup()
+                .addComponent(jLabel1)
+                .addGap(175, 175, 175)
+                .addComponent(enviarTodasLasMotos)))))
         .addGap(36, 36, 36))
     );
     layout.setVerticalGroup(
       layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
       .addGroup(layout.createSequentialGroup()
+        .addGap(21, 21, 21)
         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-          .addGroup(layout.createSequentialGroup()
-            .addGap(36, 36, 36)
-            .addComponent(jLabel1))
-          .addGroup(layout.createSequentialGroup()
-            .addGap(21, 21, 21)
-            .addComponent(enviarTodasLasMotos)))
-        .addGap(36, 36, 36)
+          .addComponent(enviarTodasLasMotos)
+          .addComponent(jLabel1))
+        .addGap(20, 20, 20)
         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
           .addGroup(layout.createSequentialGroup()
             .addComponent(vehiculo1)

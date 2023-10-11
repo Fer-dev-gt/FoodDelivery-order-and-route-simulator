@@ -19,14 +19,12 @@ public class HistorialEnvios extends javax.swing.JFrame {
   // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
   private void initComponents() {
 
-    jLabel1 = new javax.swing.JLabel();
     jScrollPane1 = new javax.swing.JScrollPane();
     tablaHistorialPedidos = new javax.swing.JTable();
     regresarBtn = new javax.swing.JButton();
+    jLabel1 = new javax.swing.JLabel();
 
     setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-
-    jLabel1.setText("Historial de Pedidos");
 
     tablaHistorialPedidos.setModel(new javax.swing.table.DefaultTableModel(
       new Object [][] {
@@ -48,14 +46,13 @@ public class HistorialEnvios extends javax.swing.JFrame {
       }
     });
 
+    jLabel1.setFont(new java.awt.Font("Monaco", 1, 36)); // NOI18N
+    jLabel1.setText("Historial de Pedidos");
+
     javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
     getContentPane().setLayout(layout);
     layout.setHorizontalGroup(
       layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-      .addGroup(layout.createSequentialGroup()
-        .addGap(426, 426, 426)
-        .addComponent(jLabel1)
-        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
       .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
         .addContainerGap(53, Short.MAX_VALUE)
         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -65,13 +62,17 @@ public class HistorialEnvios extends javax.swing.JFrame {
           .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
             .addComponent(regresarBtn)
             .addGap(443, 443, 443))))
+      .addGroup(layout.createSequentialGroup()
+        .addGap(272, 272, 272)
+        .addComponent(jLabel1)
+        .addGap(0, 0, Short.MAX_VALUE))
     );
     layout.setVerticalGroup(
       layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
       .addGroup(layout.createSequentialGroup()
-        .addGap(39, 39, 39)
+        .addGap(25, 25, 25)
         .addComponent(jLabel1)
-        .addGap(52, 52, 52)
+        .addGap(35, 35, 35)
         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 252, javax.swing.GroupLayout.PREFERRED_SIZE)
         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 186, Short.MAX_VALUE)
         .addComponent(regresarBtn)
