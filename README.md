@@ -16,38 +16,30 @@
 - [Author](#author)
 
 ## Demo and Features
-### This app has many features among which are the following:
-<p>The admin module has a courses specific panel where you can do CRUD operations and see the 3 classes with the most students 📒</p>
+### As a manager for your restaurant this app has many features for you:
+<p>No logins needed to start using the delivering system, from the start you'll be presented with a simple menu where you can chose which action to do</p>
 <img width="725" alt="Screenshot 2023-10-10 at 18 14 32" src="https://github.com/Fer-dev-gt/School-Management-System/assets/119085740/02058d1d-2308-4906-a2ef-bf1966b5874f">
 
-
-<p>You can load your data by bulks with just selecting an existing .CSV file that has the information of either your teacher, courses or sturdents 🖥️</p>
+<p>The first option allows you to register any new food product to your inventory for delivery, as long as the product is not repeated you only need to enter the name of the food and its price</p>
 <img width="827" alt="Screenshot 2023-10-10 at 18 15 30" src="https://github.com/Fer-dev-gt/School-Management-System/assets/119085740/cf926a28-234a-4b36-8f42-aad898770556">
 
-
-<p>You can create and export a pdf file with a table that has information of all registered students, also it displays a pie chart with the percentages of male and female students! 📖</p>
+<p>The next action is really important, you can create a customer delivery order by adding any amount of any food we have for them by just click on the item inside the table and pressing the 'agregar' button</p>
 <img width="952" alt="Screenshot 2023-10-10 at 18 15 46" src="https://github.com/Fer-dev-gt/School-Management-System/assets/119085740/7b085e26-34cc-4300-b75d-003450ae5840">
 
-
-<p>When a new teacher or student is created a new account is also created with the teacher/student code and a default password (1234), when a teacher or student logs in a new window will be displayed with X amount of button depending of how many classes they teach or receive 👤</p>
+<p>When the customer is done ordering the app will show them the total cost of the order, you as a manager can assign an available food deliveryman to take them the food, it is necessary to specified the distance it will have to travel (in km)</p>
 <img width="954" alt="Screenshot 2023-10-10 at 18 16 17" src="https://github.com/Fer-dev-gt/School-Management-System/assets/119085740/3e8360f2-677a-4965-8a3d-85f20236232c">
 
-
-<p>You can update a teacher's data to change their email or password 👩🏻‍🏫</p>
+<p>Once the order has been assigned the selected deliveryman will no longer appear on the ComboBox because is busy delivering the food</p>
 <img width="959" alt="Screenshot 2023-10-10 at 18 16 31" src="https://github.com/Fer-dev-gt/School-Management-System/assets/119085740/db99b443-7ad2-41a3-aae6-66ce12f5da63">
 
-
-<p>On the teachers module you can add any amount of students by uploading a csv file, also you can create the activities of your courses with the grades that your students got also with a csv file, on the table you can find your students data and activities of your class with the average score of the class for each activity 📂</p>
+<p>When an order is ready to be sent, on this window you can start the process of delivering the food, thanks to the use of the Thread class we can sent multiple bikes at the sime time! cool right? at real time we can check how our bikers are delivering the orders to the end goal and making their trip back, since the distances can vary the time the bikers will take to complete an order may vary</p>
 <img width="1077" alt="Screenshot 2023-10-10 at 18 16 55" src="https://github.com/Fer-dev-gt/School-Management-System/assets/119085740/4e5472c9-f1bd-4949-b943-f1a44cc395d2">
 
-
-<p>Inside the students module you can see the classes your assigned to and also you can change your info including uploading your profile photo for your account! 😎</p>
+<p>The last action will show the manager a table with ALL the completed trips the restaurant has sent to its customers, so the can know the time the order was sent and received, the amount of the order and the distance traveled</p>
 <img width="984" alt="Screenshot 2023-10-10 at 18 18 21" src="https://github.com/Fer-dev-gt/School-Management-System/assets/119085740/705ecd34-6296-498b-ae47-494c0603b0fb">
 
-
-<p>A student can check their grades and see what are its best grades obtained so far 😎</p>
+<p>All this is possible thanks to keeping track of this data inside a .bin file that's read even when the app is closed and opened again</p>
 <img width="147" alt="image" src="https://github.com/Fer-dev-gt/School-Management-System/assets/119085740/7509f454-ed79-4dd4-920b-1588b51881da">
-
 
 
 ## Installation Steps:
