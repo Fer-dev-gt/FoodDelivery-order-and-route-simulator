@@ -1,5 +1,7 @@
-<h1 align="center" id="title">🚴🏼 Food Delivery Desktop App 🚴🏾‍♀️</h1>
-<p>This java GUI app is designed to manage the internal procedures related to managing the date of teacher, students and courses. You can use to register new teachers and assigned to their respective courses they teach</p>
+<h1 align="center" id="title">🍔🚴🏼 Food Delivery Desktop App 🚴🏾‍♀️🍔</h1>
+<p>If you needed a good and interactive app to keep track of your delivery orders for your restaurant, then you are at the right place!</p>
+<p>By using this delivery food managament app you can simulate how your business would work by offering your food for delivery and creating orders for your customers and assign them to your deliverymen and keeping track of their trips to their destination and on their way back</p>
+<p>Also a datalog will be created for every order that has been completed so you can use it to optimize your business, it's really simple and interactive so if you are curious then stop wasting time and try it already! 🍔😋🍔</p>
 
 
 <img width="864" alt="Screenshot 2023-10-10 at 18 17 05" src="https://github.com/Fer-dev-gt/School-Management-System/assets/119085740/d7eb391b-8921-4e9c-a21d-18c254eff3ac">
@@ -60,8 +62,6 @@ Technologies used in the project:
 *   NetBeans IDE 15
 *   java GUI
 *   iOS 13.4.1
-*   itextpdf-5.5.13.3 (library for pdf manipulation)
-*   jfreechart-1.0.19 (library for charts)
 
 ### Structure
 
