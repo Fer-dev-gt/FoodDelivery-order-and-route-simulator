@@ -1,6 +1,7 @@
 <h1 align="center" id="title">🍔🚴🏼 Food Delivery Desktop App 🚴🏾‍♀️🍔</h1>
 <p>If you needed a good and interactive app to keep track of your delivery orders for your restaurant, then you are at the right place!</p>
 <p>By using this delivery food managament app you can simulate how your business would work by offering your food for delivery and creating orders for your customers and assign them to your deliverymen and keeping track of their trips to their destination and on their way back</p>
+<p>All this is possible thanks to using java Threads so we can execute multiple processes at the same time in order to have a executable multi-thread app</p>
 <p>Also a datalog will be created for every order that has been completed so you can use it to optimize your business, it's really simple and interactive so if you are curious then stop wasting time and try it already! 🍔😋🍔</p>
 
 
