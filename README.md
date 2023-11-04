@@ -26,10 +26,10 @@
 <p>The first option allows you to register any new food product to your inventory for delivery, as long as the product is not repeated you only need to enter the name of the food and its price</p>
 <img width="827" alt="Screenshot 2023-10-10 at 18 15 30" src="https://github.com/Fer-dev-gt/School-Management-System/assets/119085740/cf926a28-234a-4b36-8f42-aad898770556">
 
-<p>The next action is really important, you can create a customer delivery order by adding any amount of any food we have for them by just click on the item inside the table and pressing the 'agregar' button</p>
+<p>The next action is really important, you can create a customer delivery order by adding any amount of any food we have for them by just clicking on the item inside the table and pressing the 'agregar' button</p>
 <img width="952" alt="Screenshot 2023-10-10 at 18 15 46" src="https://github.com/Fer-dev-gt/School-Management-System/assets/119085740/7b085e26-34cc-4300-b75d-003450ae5840">
 
-<p>When the customer is done ordering the app will show them the total cost of the order, you as a manager can assign an available food deliveryman to take them the food, it is necessary to specified the distance it will have to travel (in km)</p>
+<p>When the customer is done ordering the app will show them the total cost of the order, you as a manager can assign an available food deliveryman to take the food to them, it is necessary to specify the travle distance (in km)</p>
 <img width="954" alt="Screenshot 2023-10-10 at 18 16 17" src="https://github.com/Fer-dev-gt/School-Management-System/assets/119085740/3e8360f2-677a-4965-8a3d-85f20236232c">
 
 <p>Once the order has been assigned the selected deliveryman will no longer appear on the ComboBox because is busy delivering the food</p>
